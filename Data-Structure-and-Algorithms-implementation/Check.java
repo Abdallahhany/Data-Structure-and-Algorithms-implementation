@@ -526,8 +526,7 @@ class stack{
     }
 }
 /********************************* 16- Reverse string using stack  *******************/
-class Main
-{
+class Main {
     public static void reverse(StringBuffer str)
     {
         int n = str.length();
@@ -577,12 +576,7 @@ class HeapSorting{
     public static void main(String[] args){
         int []list=new int []{7,2,4,9,6,3,8,10,1,5};
         HeapSort(list,list.length);
-        Print(list,list.length);
-    }
-    private static void Swap(int index1,int index2){
-        int temp=index1;
-        index1=index2;
-        index2=temp;
+        System.out.print(Arrays.toString(list));
     }
     private static void Heapify(int[] array,int size,int i){
         int L = 2 * i + 1;
@@ -590,8 +584,10 @@ class HeapSorting{
         int Max =i;
         if(L < size && array[L] > array[Max] ) Max = L;
         if(R < size && array[R] > array[Max] ) Max = R;
-        if(array[Max] !=array[i]){
-            Swap(array[i],array[Max]);
+        if(Max !=i){
+            int temp = array[i];
+            array[i]=array[Max];
+            array[Max]=temp;
             Heapify(array,size,Max);
         }
     }
@@ -603,14 +599,11 @@ class HeapSorting{
     private static void HeapSort(int[] array,int size){
         buildHeap(array,size);
         for(int i = size -1  ; i >= 0 ; i--){
-            Swap(array[0],array[i]);
+            int temp=array[0];
+            array[0]=array[i];
+            array[i]=temp;
             Heapify(array,i , 0);
         }
-    }
-    private static void Print(int[] array,int size){
-        for (int i = 0; i <= size ; i++)
-            System.out.print(array[i]+" ");
-        System.out.println();
     }
 }
 
@@ -627,7 +620,7 @@ class MergingTwoArrays{
         int A=0,B=0,C=0;
         while (A<lengthA&&B<lengthB){
             if(arrayA[A]<arrayB[B]){
-                arrayC[C++]=arrayA[A++];// op++ (perform the operation then increment to the next place)
+                arrayC[C++]=arrayA[A++];
             }else{
                 arrayC[C++]=arrayB[B++];
             }
